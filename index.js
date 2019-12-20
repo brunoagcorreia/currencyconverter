@@ -27,12 +27,17 @@ app.post('/input', function(req, res){
   amountToConvert = req.body.amount
   console.log(amountToConvert);
   let currencyToConvert = convertionApi + req.body.from_curr
+  let toCurr = req.body.to_curr;
   fetch(currencyToConvert)
   .then(res => res.json())
   .then( data => {
     // console.log(amountToConvert * data.rates.USD)
+    console.log(toCurr)
+    // let erg = amountToConvert * data.rates.toCurr
     let erg = amountToConvert * data.rates.USD
-    res.render('index', { erg: erg})
+
+    // console.log(erg)
+    res.render('index', { erg: erg })
   })
 });
 
